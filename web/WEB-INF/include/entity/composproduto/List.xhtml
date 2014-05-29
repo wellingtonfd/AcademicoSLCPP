@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="ComposprodutoListForm">
+
+        <p:panel header="#{myBundle.ListComposprodutoTitle}">
+            <p:contextMenu id="ComposprodutoDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{myBundle.Create}" onclick="document.getElementById('ComposprodutoListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{myBundle.View}" onclick="document.getElementById('ComposprodutoListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{myBundle.Edit}" onclick="document.getElementById('ComposprodutoListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{myBundle.Delete}" onclick="document.getElementById('ComposprodutoListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{myBundle.ComposprodutoMenuItem_produtoCollection}" icon="ui-icon-search"  action="#{composprodutoController.navigateProdutoCollection}" disabled="#{empty composprodutoController.selected.produtoCollection}" ajax="false"/>  
+            </p:contextMenu>
+            <p:dataTable id="datalist"
+                         value="#{composprodutoController.items}"
+                         var="item"
+                         rowKey="#{item.tipoproduto}"
+                         paginator="true"
+                         rows="5"
+                         rowsPerPageTemplate="5,10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{composprodutoController.selected}">
+
+                <p:ajax event="rowSelect"   update=":ComposprodutoListForm:createButton :ComposprodutoListForm:viewButton :ComposprodutoListForm:editButton :ComposprodutoListForm:deleteButton :ComposprodutoListForm:ComposprodutoDataTableContextMenu" listener="#{composprodutoController.resetParents}"/>
+                <p:ajax event="rowUnselect" update=":ComposprodutoListForm:createButton :ComposprodutoListForm:viewButton :ComposprodutoListForm:editButton :ComposprodutoListForm:deleteButton :ComposprodutoListForm:ComposprodutoDataTableContextMenu" listener="#{composprodutoController.resetParents}"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('ComposprodutoListForm:viewButton').click();"/>
+
+                <p:column sortBy="#{item.tipoproduto}" filterBy="#{item.tipoproduto}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListComposprodutoTitle_tipoproduto}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.tipoproduto}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.formulaproduto}" filterBy="#{item.formulaproduto}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListComposprodutoTitle_formulaproduto}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.formulaproduto}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.formaproduto}" filterBy="#{item.formaproduto}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListComposprodutoTitle_formaproduto}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.formaproduto}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.odorproduto}" filterBy="#{item.odorproduto}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListComposprodutoTitle_odorproduto}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.odorproduto}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.ph}" filterBy="#{item.ph}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListComposprodutoTitle_ph}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.ph}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.estfisico}" filterBy="#{item.estfisico}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListComposprodutoTitle_estfisico}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.estfisico}"/>
+                </p:column>
+
+                <!--
+                                    <p:column sortBy="#{item.solibilidadeagua}" filterBy="#{item.solibilidadeagua}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListComposprodutoTitle_solibilidadeagua}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.solibilidadeagua}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.limiteexplosivo}" filterBy="#{item.limiteexplosivo}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListComposprodutoTitle_limiteexplosivo}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.limiteexplosivo}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.densidade}" filterBy="#{item.densidade}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListComposprodutoTitle_densidade}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.densidade}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.pressavapor}" filterBy="#{item.pressavapor}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListComposprodutoTitle_pressavapor}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.pressavapor}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.sinonimos}" filterBy="#{item.sinonimos}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListComposprodutoTitle_sinonimos}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.sinonimos}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.tramentodisposicao}" filterBy="#{item.tramentodisposicao}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListComposprodutoTitle_tramentodisposicao}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.tramentodisposicao}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.regulamentacao}" filterBy="#{item.regulamentacao}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListComposprodutoTitle_regulamentacao}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.regulamentacao}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.decomposicao}" filterBy="#{item.decomposicao}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListComposprodutoTitle_decomposicao}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.decomposicao}"/>
+                                    </p:column>
+                -->
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{composprodutoController.prepareCreate}" update=":ComposprodutoCreateForm" oncomplete="ComposprodutoCreateDialog.show()"/>
+            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{myBundle.View}" update=":ComposprodutoViewForm" oncomplete="ComposprodutoViewDialog.show()" disabled="#{empty composprodutoController.selected}"/>
+            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":ComposprodutoEditForm" oncomplete="ComposprodutoEditDialog.show()" disabled="#{empty composprodutoController.selected}"/>
+            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{composprodutoController.delete}" update=":growl,datalist" disabled="#{empty composprodutoController.selected}">
+                <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/WEB-INF/entity/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="NivelusuarioListForm">
+
+        <p:panel header="#{myBundle.ListNivelusuarioTitle}">
+            <p:contextMenu id="NivelusuarioDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{myBundle.Create}" onclick="document.getElementById('NivelusuarioListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{myBundle.View}" onclick="document.getElementById('NivelusuarioListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{myBundle.Edit}" onclick="document.getElementById('NivelusuarioListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{myBundle.Delete}" onclick="document.getElementById('NivelusuarioListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{myBundle.NivelusuarioMenuItem_usuarioCollection}" icon="ui-icon-search"  action="#{nivelusuarioController.navigateUsuarioCollection}" disabled="#{empty nivelusuarioController.selected.usuarioCollection}" ajax="false"/>  
+            </p:contextMenu>
+            <p:dataTable id="datalist"
+                         value="#{nivelusuarioController.items}"
+                         var="item"
+                         rowKey="#{item.idNivelusuario}"
+                         paginator="true"
+                         rows="5"
+                         rowsPerPageTemplate="5,10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{nivelusuarioController.selected}">
+
+                <p:ajax event="rowSelect"   update=":NivelusuarioListForm:createButton :NivelusuarioListForm:viewButton :NivelusuarioListForm:editButton :NivelusuarioListForm:deleteButton :NivelusuarioListForm:NivelusuarioDataTableContextMenu" listener="#{nivelusuarioController.resetParents}"/>
+                <p:ajax event="rowUnselect" update=":NivelusuarioListForm:createButton :NivelusuarioListForm:viewButton :NivelusuarioListForm:editButton :NivelusuarioListForm:deleteButton :NivelusuarioListForm:NivelusuarioDataTableContextMenu" listener="#{nivelusuarioController.resetParents}"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('NivelusuarioListForm:viewButton').click();"/>
+
+                <p:column sortBy="#{item.idNivelusuario}" filterBy="#{item.idNivelusuario}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListNivelusuarioTitle_idNivelusuario}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idNivelusuario}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.nomenivel}" filterBy="#{item.nomenivel}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListNivelusuarioTitle_nomenivel}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nomenivel}"/>
+                </p:column>
+
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{nivelusuarioController.prepareCreate}" update=":NivelusuarioCreateForm" oncomplete="NivelusuarioCreateDialog.show()"/>
+            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{myBundle.View}" update=":NivelusuarioViewForm" oncomplete="NivelusuarioViewDialog.show()" disabled="#{empty nivelusuarioController.selected}"/>
+            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":NivelusuarioEditForm" oncomplete="NivelusuarioEditDialog.show()" disabled="#{empty nivelusuarioController.selected}"/>
+            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{nivelusuarioController.delete}" update=":growl,datalist" disabled="#{empty nivelusuarioController.selected}">
+                <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/WEB-INF/entity/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

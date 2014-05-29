@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsuarioCreateDlg" widgetVar="UsuarioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateUsuarioTitle}" closeOnEscape="true">
+
+            <h:form id="UsuarioCreateForm">
+
+                <h:panelGroup id="display" rendered="#{usuarioController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreateUsuarioLabel_login}" for="login" />
+                        <p:inputText id="login" value="#{usuarioController.selected.login}" title="#{myBundle.CreateUsuarioTitle_login}" size="12" maxlength="12"/>
+
+                        <p:outputLabel value="#{myBundle.CreateUsuarioLabel_senha}" for="senha" />
+                        <p:password id="senha" value="#{usuarioController.selected.senha}" title="#{myBundle.CreateUsuarioTitle_senha}" size="32" maxlength="32"/>
+
+                        <p:outputLabel value="#{myBundle.CreateUsuarioLabel_nivel}" for="nivel" />
+                        <p:inputText id="nivel" value="#{usuarioController.selected.nivel}" title="#{myBundle.CreateUsuarioTitle_nivel}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateUsuarioLabel_ativo}" for="ativo" />
+                        <p:selectBooleanCheckbox id="ativo" value="#{usuarioController.selected.ativo}" />
+
+                        <p:outputLabel value="#{myBundle.CreateUsuarioLabel_nivelusuarioidNivelusuario}" for="nivelusuarioidNivelusuario" />
+                        <p:selectOneMenu id="nivelusuarioidNivelusuario" value="#{usuarioController.selected.nivelusuarioidNivelusuario}" required="true" requiredMessage="#{myBundle.CreateUsuarioRequiredMessage_nivelusuarioidNivelusuario}" converter="nivelusuarioConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{nivelusuarioController.items}"
+                                           var="nivelusuarioidNivelusuarioItem"
+                                           itemValue="#{nivelusuarioidNivelusuarioItem}"
+                                           itemLabel="#{nivelusuarioidNivelusuarioItem.idNivelusuario.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{usuarioController.saveNew}" value="#{myBundle.Save}" update="display,:UsuarioListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,UsuarioCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="UsuarioCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

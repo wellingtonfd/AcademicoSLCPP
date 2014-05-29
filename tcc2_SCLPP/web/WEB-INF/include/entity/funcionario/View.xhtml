@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FuncionarioViewDlg" widgetVar="FuncionarioViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewFuncionarioTitle}" closeOnEscape="true">
+
+            <h:form id="FuncionarioViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{funcionarioController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewFuncionarioLabel_idFuncionario}"/>
+                        <h:outputText value="#{funcionarioController.selected.idFuncionario}" title="#{myBundle.ViewFuncionarioTitle_idFuncionario}"/>
+
+                        <h:outputText value="#{myBundle.ViewFuncionarioLabel_nome}"/>
+                        <h:outputText value="#{funcionarioController.selected.nome}" title="#{myBundle.ViewFuncionarioTitle_nome}"/>
+
+                        <h:outputText value="#{myBundle.ViewFuncionarioLabel_sobrenome}"/>
+                        <h:outputText value="#{funcionarioController.selected.sobrenome}" title="#{myBundle.ViewFuncionarioTitle_sobrenome}"/>
+
+                        <h:outputText value="#{myBundle.ViewFuncionarioLabel_matricula}"/>
+                        <h:outputText value="#{funcionarioController.selected.matricula}" title="#{myBundle.ViewFuncionarioTitle_matricula}"/>
+
+                        <h:outputText value="#{myBundle.ViewFuncionarioLabel_funcao}"/>
+                        <h:outputText value="#{funcionarioController.selected.funcao}" title="#{myBundle.ViewFuncionarioTitle_funcao}"/>
+
+                        <h:outputText value="#{myBundle.ViewFuncionarioLabel_especializacao}"/>
+                        <h:outputText value="#{funcionarioController.selected.especializacao}" title="#{myBundle.ViewFuncionarioTitle_especializacao}"/>
+
+                        <h:outputText value="#{myBundle.ViewFuncionarioLabel_dtadmissao}"/>
+                        <h:outputText value="#{funcionarioController.selected.dtadmissao}" title="#{myBundle.ViewFuncionarioTitle_dtadmissao}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewFuncionarioLabel_cpf}"/>
+                        <h:outputText value="#{funcionarioController.selected.cpf}" title="#{myBundle.ViewFuncionarioTitle_cpf}"/>
+
+                        <h:outputText value="#{myBundle.ViewFuncionarioLabel_rg}"/>
+                        <h:outputText value="#{funcionarioController.selected.rg}" title="#{myBundle.ViewFuncionarioTitle_rg}"/>
+
+                        <h:outputText value="#{myBundle.ViewFuncionarioLabel_dtnasc}"/>
+                        <h:outputText value="#{funcionarioController.selected.dtnasc}" title="#{myBundle.ViewFuncionarioTitle_dtnasc}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewFuncionarioLabel_cargo}"/>
+                        <h:outputText value="#{funcionarioController.selected.cargo}" title="#{myBundle.ViewFuncionarioTitle_cargo}"/>
+
+                        <h:outputText value="#{myBundle.ViewFuncionarioLabel_nivel}"/>
+                        <h:outputText value="#{funcionarioController.selected.nivel}" title="#{myBundle.ViewFuncionarioTitle_nivel}"/>
+
+                        <h:outputText value="#{myBundle.ViewFuncionarioLabel_lotacao}"/>
+                        <h:outputText value="#{funcionarioController.selected.lotacao}" title="#{myBundle.ViewFuncionarioTitle_lotacao}"/>
+
+                        <h:outputText value="#{myBundle.ViewFuncionarioLabel_usuarioidUsuario}"/>
+                        <h:outputText value="#{funcionarioController.selected.usuarioidUsuario.idUsuario}"/>
+
+                        <h:outputText value="#{myBundle.ViewFuncionarioLabel_enderecoidEndereco}"/>
+                        <h:outputText value="#{funcionarioController.selected.enderecoidEndereco.idEndereco}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="FuncionarioViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

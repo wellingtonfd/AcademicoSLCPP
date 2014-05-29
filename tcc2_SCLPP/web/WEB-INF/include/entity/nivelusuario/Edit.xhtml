@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="NivelusuarioEditDlg" widgetVar="NivelusuarioEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditNivelusuarioTitle}" closeOnEscape="true">
+
+            <h:form id="NivelusuarioEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{nivelusuarioController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditNivelusuarioLabel_idNivelusuario}" for="idNivelusuario" />
+                        <h:outputText id="idNivelusuario" value="#{nivelusuarioController.selected.idNivelusuario}" />
+
+                        <p:outputLabel value="#{myBundle.EditNivelusuarioLabel_nomenivel}" for="nomenivel" />
+                        <p:inputText id="nomenivel" value="#{nivelusuarioController.selected.nomenivel}" title="#{myBundle.EditNivelusuarioTitle_nomenivel}" size="20" maxlength="20"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{nivelusuarioController.save}" value="#{myBundle.Save}" update="display,:NivelusuarioListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,NivelusuarioEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="NivelusuarioEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

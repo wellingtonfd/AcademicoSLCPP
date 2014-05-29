@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoCompatibilidadeCreateDlg" widgetVar="TipoCompatibilidadeCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateTipoCompatibilidadeTitle}" closeOnEscape="true">
+
+            <h:form id="TipoCompatibilidadeCreateForm">
+
+                <h:panelGroup id="display" rendered="#{tipoCompatibilidadeController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreateTipoCompatibilidadeLabel_especificacao}" for="especificacao" />
+                        <p:inputText id="especificacao" value="#{tipoCompatibilidadeController.selected.especificacao}" title="#{myBundle.CreateTipoCompatibilidadeTitle_especificacao}" required="true" requiredMessage="#{myBundle.CreateTipoCompatibilidadeRequiredMessage_especificacao}" size="80" maxlength="80"/>
+
+                        <p:outputLabel value="#{myBundle.CreateTipoCompatibilidadeLabel_toxidadeidToxidade}" for="toxidadeidToxidade" />
+                        <p:selectOneMenu id="toxidadeidToxidade" value="#{tipoCompatibilidadeController.selected.toxidadeidToxidade}" required="true" requiredMessage="#{myBundle.CreateTipoCompatibilidadeRequiredMessage_toxidadeidToxidade}" converter="toxidadeConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{toxidadeController.items}"
+                                           var="toxidadeidToxidadeItem"
+                                           itemValue="#{toxidadeidToxidadeItem}"
+                                           itemLabel="#{toxidadeidToxidadeItem.descricao.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.CreateTipoCompatibilidadeLabel_tipoMovimentacaoidTipoMovimentacao}" for="tipoMovimentacaoidTipoMovimentacao" />
+                        <p:selectOneMenu id="tipoMovimentacaoidTipoMovimentacao" value="#{tipoCompatibilidadeController.selected.tipoMovimentacaoidTipoMovimentacao}" required="true" requiredMessage="#{myBundle.CreateTipoCompatibilidadeRequiredMessage_tipoMovimentacaoidTipoMovimentacao}" converter="tipoMovimentacaoConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoMovimentacaoController.items}"
+                                           var="tipoMovimentacaoidTipoMovimentacaoItem"
+                                           itemValue="#{tipoMovimentacaoidTipoMovimentacaoItem}"
+                                           itemLabel="#{tipoMovimentacaoidTipoMovimentacaoItem.idTipoMovimentacao.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.CreateTipoCompatibilidadeLabel_ptFulgoridPtFulgor}" for="ptFulgoridPtFulgor" />
+                        <p:selectOneMenu id="ptFulgoridPtFulgor" value="#{tipoCompatibilidadeController.selected.ptFulgoridPtFulgor}" required="true" requiredMessage="#{myBundle.CreateTipoCompatibilidadeRequiredMessage_ptFulgoridPtFulgor}" converter="ptFulgorConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{ptFulgorController.items}"
+                                           var="ptFulgoridPtFulgorItem"
+                                           itemValue="#{ptFulgoridPtFulgorItem}"
+                                           itemLabel="#{ptFulgoridPtFulgorItem.descricao.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.CreateTipoCompatibilidadeLabel_ptEbulicaoidPtEbulicao}" for="ptEbulicaoidPtEbulicao" />
+                        <p:selectOneMenu id="ptEbulicaoidPtEbulicao" value="#{tipoCompatibilidadeController.selected.ptEbulicaoidPtEbulicao}" required="true" requiredMessage="#{myBundle.CreateTipoCompatibilidadeRequiredMessage_ptEbulicaoidPtEbulicao}" converter="ptEbulicaoConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{ptEbulicaoController.items}"
+                                           var="ptEbulicaoidPtEbulicaoItem"
+                                           itemValue="#{ptEbulicaoidPtEbulicaoItem}"
+                                           itemLabel="#{ptEbulicaoidPtEbulicaoItem.descricao.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.CreateTipoCompatibilidadeLabel_numOnuidNumOnu}" for="numOnuidNumOnu" />
+                        <p:selectOneMenu id="numOnuidNumOnu" value="#{tipoCompatibilidadeController.selected.numOnuidNumOnu}" required="true" requiredMessage="#{myBundle.CreateTipoCompatibilidadeRequiredMessage_numOnuidNumOnu}" converter="numOnuConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{numOnuController.items}"
+                                           var="numOnuidNumOnuItem"
+                                           itemValue="#{numOnuidNumOnuItem}"
+                                           itemLabel="#{numOnuidNumOnuItem.idNumOnu.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.CreateTipoCompatibilidadeLabel_classeidClasse}" for="classeidClasse" />
+                        <p:selectOneMenu id="classeidClasse" value="#{tipoCompatibilidadeController.selected.classeidClasse}" required="true" requiredMessage="#{myBundle.CreateTipoCompatibilidadeRequiredMessage_classeidClasse}" converter="classeConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{classeController.items}"
+                                           var="classeidClasseItem"
+                                           itemValue="#{classeidClasseItem}"
+                                           itemLabel="#{classeidClasseItem.idClasse.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tipoCompatibilidadeController.saveNew}" value="#{myBundle.Save}" update="display,:TipoCompatibilidadeListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,TipoCompatibilidadeCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="TipoCompatibilidadeCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

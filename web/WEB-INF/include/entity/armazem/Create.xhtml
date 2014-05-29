@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ArmazemCreateDlg" widgetVar="ArmazemCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateArmazemTitle}" closeOnEscape="true">
+
+            <h:form id="ArmazemCreateForm">
+
+                <h:panelGroup id="display" rendered="#{armazemController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreateArmazemLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{armazemController.selected.tipo}" title="#{myBundle.CreateArmazemTitle_tipo}" required="true" requiredMessage="#{myBundle.CreateArmazemRequiredMessage_tipo}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.CreateArmazemLabel_capacidade}" for="capacidade" />
+                        <p:inputText id="capacidade" value="#{armazemController.selected.capacidade}" title="#{myBundle.CreateArmazemTitle_capacidade}" required="true" requiredMessage="#{myBundle.CreateArmazemRequiredMessage_capacidade}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateArmazemLabel_especificacao}" for="especificacao" />
+                        <p:inputText id="especificacao" value="#{armazemController.selected.especificacao}" title="#{myBundle.CreateArmazemTitle_especificacao}" required="true" requiredMessage="#{myBundle.CreateArmazemRequiredMessage_especificacao}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.CreateArmazemLabel_certificacao}" for="certificacao" />
+                        <p:inputText id="certificacao" value="#{armazemController.selected.certificacao}" title="#{myBundle.CreateArmazemTitle_certificacao}" required="true" requiredMessage="#{myBundle.CreateArmazemRequiredMessage_certificacao}" size="50" maxlength="50"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{armazemController.saveNew}" value="#{myBundle.Save}" update="display,:ArmazemListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ArmazemCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ArmazemCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

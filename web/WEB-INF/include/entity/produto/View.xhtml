@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProdutoViewDlg" widgetVar="ProdutoViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewProdutoTitle}" closeOnEscape="true">
+
+            <h:form id="ProdutoViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{produtoController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewProdutoLabel_idProduto}"/>
+                        <h:outputText value="#{produtoController.selected.idProduto}" title="#{myBundle.ViewProdutoTitle_idProduto}"/>
+
+                        <h:outputText value="#{myBundle.ViewProdutoLabel_nomeProduto}"/>
+                        <h:outputText value="#{produtoController.selected.nomeProduto}" title="#{myBundle.ViewProdutoTitle_nomeProduto}"/>
+
+                        <h:outputText value="#{myBundle.ViewProdutoLabel_nomegenerico}"/>
+                        <h:outputText value="#{produtoController.selected.nomegenerico}" title="#{myBundle.ViewProdutoTitle_nomegenerico}"/>
+
+                        <h:outputText value="#{myBundle.ViewProdutoLabel_origem}"/>
+                        <h:outputText value="#{produtoController.selected.origem}" title="#{myBundle.ViewProdutoTitle_origem}"/>
+
+                        <h:outputText value="#{myBundle.ViewProdutoLabel_numcas}"/>
+                        <h:outputText value="#{produtoController.selected.numcas}" title="#{myBundle.ViewProdutoTitle_numcas}"/>
+
+                        <h:outputText value="#{myBundle.ViewProdutoLabel_rotuloproduto}"/>
+                        <h:outputText value="#{produtoController.selected.rotuloproduto}" title="#{myBundle.ViewProdutoTitle_rotuloproduto}"/>
+
+                        <h:outputText value="#{myBundle.ViewProdutoLabel_painelseg}"/>
+                        <h:outputText value="#{produtoController.selected.painelseg}" title="#{myBundle.ViewProdutoTitle_painelseg}"/>
+
+                        <h:outputText value="#{myBundle.ViewProdutoLabel_risco}"/>
+                        <h:outputText value="#{produtoController.selected.risco}" title="#{myBundle.ViewProdutoTitle_risco}"/>
+
+                        <h:outputText value="#{myBundle.ViewProdutoLabel_acoesemergencia}"/>
+                        <h:outputText value="#{produtoController.selected.acoesemergencia}" title="#{myBundle.ViewProdutoTitle_acoesemergencia}"/>
+
+                        <h:outputText value="#{myBundle.ViewProdutoLabel_numlote}"/>
+                        <h:outputText value="#{produtoController.selected.numlote}" title="#{myBundle.ViewProdutoTitle_numlote}"/>
+
+                        <h:outputText value="#{myBundle.ViewProdutoLabel_dtfabricacao}"/>
+                        <h:outputText value="#{produtoController.selected.dtfabricacao}" title="#{myBundle.ViewProdutoTitle_dtfabricacao}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewProdutoLabel_dtvalidade}"/>
+                        <h:outputText value="#{produtoController.selected.dtvalidade}" title="#{myBundle.ViewProdutoTitle_dtvalidade}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewProdutoLabel_rumOnuidNumOnu}"/>
+                        <h:outputText value="#{produtoController.selected.rumOnuidNumOnu.idNumOnu}"/>
+
+                        <h:outputText value="#{myBundle.ViewProdutoLabel_fornecedoridFornecedor}"/>
+                        <h:outputText value="#{produtoController.selected.fornecedoridFornecedor.idFornecedor}"/>
+
+                        <h:outputText value="#{myBundle.ViewProdutoLabel_composprodutotipoproduto}"/>
+                        <h:outputText value="#{produtoController.selected.composprodutotipoproduto.tipoproduto}"/>
+
+                        <h:outputText value="#{myBundle.ViewProdutoLabel_classeidClasse}"/>
+                        <h:outputText value="#{produtoController.selected.classeidClasse.idClasse}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="ProdutoViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

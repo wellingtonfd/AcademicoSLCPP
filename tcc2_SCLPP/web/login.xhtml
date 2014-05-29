@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <link href="resources/css/login.css" type="text/css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+      <div class="conteiner">
+        <h:form  id="formLogin">  
+            <p:growl id="growl" showDetail="true" life="3000"/>
+            <h3>simples</h3>
+            <p:panel header="Acesso sistema" footer="visible">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel for="username" value="Username"/>
+                    <h:inputText value="#{myBundle.CreateUsuarioTitle_login}"
+                                 id="username" required="true" label="UserName"/>
+                    
+                     <h:outputLabel for="password" value="password"/>
+                     <h:inputSecret value="#{myBundle.CreateUsuarioTitle_senha}"
+                                 id="password" required="true" label="password"/>
+                     
+                     <f:facet name="footer">
+                         <p:commandButton id="loginbutton" value="login" update=":growl"
+                                          actionListener="#{myBundle.CreateUsuarioTitle_senha}"
+                                          oncomplete="handleLoginRequest(xhr, status, args)"/>
+                     </f:facet>
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+      </div>
+        <script type="text/javascript">
+            function handleLoginRequest(xhr, status, args){
+                if(args.validationFailed || !args.loggedIn){
+                    JQuery('#dialog').effect("shake",(times:3) 100);
+                }else{
+                    dig.hide();
+                    JQuery('#loginLink').fadeOut();
+                }
+            }
+        </script>
+        
+    </h:body>
+
+</html>
+
+
+

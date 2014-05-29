@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="EndArmazemEditDlg" widgetVar="EndArmazemEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditEndArmazemTitle}" closeOnEscape="true">
+
+            <h:form id="EndArmazemEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{endArmazemController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditEndArmazemLabel_idEnderecamento}" for="idEnderecamento" />
+                        <h:outputText id="idEnderecamento" value="#{endArmazemController.selected.idEnderecamento}" />
+
+                        <p:outputLabel value="#{myBundle.EditEndArmazemLabel_identificacao}" for="identificacao" />
+                        <p:inputText id="identificacao" value="#{endArmazemController.selected.identificacao}" title="#{myBundle.EditEndArmazemTitle_identificacao}" required="true" requiredMessage="#{myBundle.EditEndArmazemRequiredMessage_identificacao}" size="15" maxlength="15"/>
+
+                        <p:outputLabel value="#{myBundle.EditEndArmazemLabel_cor}" for="cor" />
+                        <p:inputText id="cor" value="#{endArmazemController.selected.cor}" title="#{myBundle.EditEndArmazemTitle_cor}" required="true" requiredMessage="#{myBundle.EditEndArmazemRequiredMessage_cor}" size="25" maxlength="25"/>
+
+                        <p:outputLabel value="#{myBundle.EditEndArmazemLabel_codAreaArmazem}" for="codAreaArmazem" />
+                        <p:inputText id="codAreaArmazem" value="#{endArmazemController.selected.codAreaArmazem}" title="#{myBundle.EditEndArmazemTitle_codAreaArmazem}" required="true" requiredMessage="#{myBundle.EditEndArmazemRequiredMessage_codAreaArmazem}" size="15" maxlength="15"/>
+
+                        <p:outputLabel value="#{myBundle.EditEndArmazemLabel_ruaArmazem}" for="ruaArmazem" />
+                        <p:inputText id="ruaArmazem" value="#{endArmazemController.selected.ruaArmazem}" title="#{myBundle.EditEndArmazemTitle_ruaArmazem}" size="15" maxlength="15"/>
+
+                        <p:outputLabel value="#{myBundle.EditEndArmazemLabel_numPortaPalete}" for="numPortaPalete" />
+                        <p:inputText id="numPortaPalete" value="#{endArmazemController.selected.numPortaPalete}" title="#{myBundle.EditEndArmazemTitle_numPortaPalete}" size="15" maxlength="15"/>
+
+                        <p:outputLabel value="#{myBundle.EditEndArmazemLabel_numPrateleiraEstante}" for="numPrateleiraEstante" />
+                        <p:inputText id="numPrateleiraEstante" value="#{endArmazemController.selected.numPrateleiraEstante}" title="#{myBundle.EditEndArmazemTitle_numPrateleiraEstante}"/>
+
+                        <p:outputLabel value="#{myBundle.EditEndArmazemLabel_posVertical}" for="posVertical" />
+                        <p:inputText id="posVertical" value="#{endArmazemController.selected.posVertical}" title="#{myBundle.EditEndArmazemTitle_posVertical}" size="80" maxlength="80"/>
+
+                        <p:outputLabel value="#{myBundle.EditEndArmazemLabel_posHorizontal}" for="posHorizontal" />
+                        <p:inputText id="posHorizontal" value="#{endArmazemController.selected.posHorizontal}" title="#{myBundle.EditEndArmazemTitle_posHorizontal}" size="80" maxlength="80"/>
+
+                        <p:outputLabel value="#{myBundle.EditEndArmazemLabel_armazemidArmazem}" for="armazemidArmazem" />
+                        <p:selectOneMenu id="armazemidArmazem" value="#{endArmazemController.selected.armazemidArmazem}" required="true" requiredMessage="#{myBundle.EditEndArmazemRequiredMessage_armazemidArmazem}" converter="armazemConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{armazemController.items}"
+                                           var="armazemidArmazemItem"
+                                           itemValue="#{armazemidArmazemItem}"
+                                           itemLabel="#{armazemidArmazemItem.idArmazem.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{endArmazemController.save}" value="#{myBundle.Save}" update="display,:EndArmazemListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,EndArmazemEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="EndArmazemEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

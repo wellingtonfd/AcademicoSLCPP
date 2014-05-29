@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComposprodutoViewDlg" widgetVar="ComposprodutoViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewComposprodutoTitle}" closeOnEscape="true">
+
+            <h:form id="ComposprodutoViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{composprodutoController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewComposprodutoLabel_tipoproduto}"/>
+                        <h:outputText value="#{composprodutoController.selected.tipoproduto}" title="#{myBundle.ViewComposprodutoTitle_tipoproduto}"/>
+
+                        <h:outputText value="#{myBundle.ViewComposprodutoLabel_formulaproduto}"/>
+                        <h:outputText value="#{composprodutoController.selected.formulaproduto}" title="#{myBundle.ViewComposprodutoTitle_formulaproduto}"/>
+
+                        <h:outputText value="#{myBundle.ViewComposprodutoLabel_formaproduto}"/>
+                        <h:outputText value="#{composprodutoController.selected.formaproduto}" title="#{myBundle.ViewComposprodutoTitle_formaproduto}"/>
+
+                        <h:outputText value="#{myBundle.ViewComposprodutoLabel_odorproduto}"/>
+                        <h:outputText value="#{composprodutoController.selected.odorproduto}" title="#{myBundle.ViewComposprodutoTitle_odorproduto}"/>
+
+                        <h:outputText value="#{myBundle.ViewComposprodutoLabel_ph}"/>
+                        <h:outputText value="#{composprodutoController.selected.ph}" title="#{myBundle.ViewComposprodutoTitle_ph}"/>
+
+                        <h:outputText value="#{myBundle.ViewComposprodutoLabel_estfisico}"/>
+                        <h:outputText value="#{composprodutoController.selected.estfisico}" title="#{myBundle.ViewComposprodutoTitle_estfisico}"/>
+
+                        <h:outputText value="#{myBundle.ViewComposprodutoLabel_solibilidadeagua}"/>
+                        <h:outputText value="#{composprodutoController.selected.solibilidadeagua}" title="#{myBundle.ViewComposprodutoTitle_solibilidadeagua}"/>
+
+                        <h:outputText value="#{myBundle.ViewComposprodutoLabel_limiteexplosivo}"/>
+                        <h:outputText value="#{composprodutoController.selected.limiteexplosivo}" title="#{myBundle.ViewComposprodutoTitle_limiteexplosivo}"/>
+
+                        <h:outputText value="#{myBundle.ViewComposprodutoLabel_densidade}"/>
+                        <h:outputText value="#{composprodutoController.selected.densidade}" title="#{myBundle.ViewComposprodutoTitle_densidade}"/>
+
+                        <h:outputText value="#{myBundle.ViewComposprodutoLabel_pressavapor}"/>
+                        <h:outputText value="#{composprodutoController.selected.pressavapor}" title="#{myBundle.ViewComposprodutoTitle_pressavapor}"/>
+
+                        <h:outputText value="#{myBundle.ViewComposprodutoLabel_sinonimos}"/>
+                        <h:outputText value="#{composprodutoController.selected.sinonimos}" title="#{myBundle.ViewComposprodutoTitle_sinonimos}"/>
+
+                        <h:outputText value="#{myBundle.ViewComposprodutoLabel_tramentodisposicao}"/>
+                        <h:outputText value="#{composprodutoController.selected.tramentodisposicao}" title="#{myBundle.ViewComposprodutoTitle_tramentodisposicao}"/>
+
+                        <h:outputText value="#{myBundle.ViewComposprodutoLabel_regulamentacao}"/>
+                        <h:outputText value="#{composprodutoController.selected.regulamentacao}" title="#{myBundle.ViewComposprodutoTitle_regulamentacao}"/>
+
+                        <h:outputText value="#{myBundle.ViewComposprodutoLabel_decomposicao}"/>
+                        <h:outputText value="#{composprodutoController.selected.decomposicao}" title="#{myBundle.ViewComposprodutoTitle_decomposicao}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="ComposprodutoViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

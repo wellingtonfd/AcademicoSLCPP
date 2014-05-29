@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ArmazemEditDlg" widgetVar="ArmazemEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditArmazemTitle}" closeOnEscape="true">
+
+            <h:form id="ArmazemEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{armazemController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditArmazemLabel_idArmazem}" for="idArmazem" />
+                        <h:outputText id="idArmazem" value="#{armazemController.selected.idArmazem}" />
+
+                        <p:outputLabel value="#{myBundle.EditArmazemLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{armazemController.selected.tipo}" title="#{myBundle.EditArmazemTitle_tipo}" required="true" requiredMessage="#{myBundle.EditArmazemRequiredMessage_tipo}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.EditArmazemLabel_capacidade}" for="capacidade" />
+                        <p:inputText id="capacidade" value="#{armazemController.selected.capacidade}" title="#{myBundle.EditArmazemTitle_capacidade}" required="true" requiredMessage="#{myBundle.EditArmazemRequiredMessage_capacidade}"/>
+
+                        <p:outputLabel value="#{myBundle.EditArmazemLabel_especificacao}" for="especificacao" />
+                        <p:inputText id="especificacao" value="#{armazemController.selected.especificacao}" title="#{myBundle.EditArmazemTitle_especificacao}" required="true" requiredMessage="#{myBundle.EditArmazemRequiredMessage_especificacao}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.EditArmazemLabel_certificacao}" for="certificacao" />
+                        <p:inputText id="certificacao" value="#{armazemController.selected.certificacao}" title="#{myBundle.EditArmazemTitle_certificacao}" required="true" requiredMessage="#{myBundle.EditArmazemRequiredMessage_certificacao}" size="50" maxlength="50"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{armazemController.save}" value="#{myBundle.Save}" update="display,:ArmazemListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ArmazemEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ArmazemEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

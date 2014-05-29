@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ComposprodutoEditDlg" widgetVar="ComposprodutoEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditComposprodutoTitle}" closeOnEscape="true">
+
+            <h:form id="ComposprodutoEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{composprodutoController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditComposprodutoLabel_tipoproduto}" for="tipoproduto" />
+                        <h:outputText id="tipoproduto" value="#{composprodutoController.selected.tipoproduto}" />
+
+                        <p:outputLabel value="#{myBundle.EditComposprodutoLabel_formulaproduto}" for="formulaproduto" />
+                        <p:inputText id="formulaproduto" value="#{composprodutoController.selected.formulaproduto}" title="#{myBundle.EditComposprodutoTitle_formulaproduto}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{myBundle.EditComposprodutoLabel_formaproduto}" for="formaproduto" />
+                        <p:inputText id="formaproduto" value="#{composprodutoController.selected.formaproduto}" title="#{myBundle.EditComposprodutoTitle_formaproduto}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{myBundle.EditComposprodutoLabel_odorproduto}" for="odorproduto" />
+                        <p:inputText id="odorproduto" value="#{composprodutoController.selected.odorproduto}" title="#{myBundle.EditComposprodutoTitle_odorproduto}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{myBundle.EditComposprodutoLabel_ph}" for="ph" />
+                        <p:inputText id="ph" value="#{composprodutoController.selected.ph}" title="#{myBundle.EditComposprodutoTitle_ph}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{myBundle.EditComposprodutoLabel_estfisico}" for="estfisico" />
+                        <p:inputText id="estfisico" value="#{composprodutoController.selected.estfisico}" title="#{myBundle.EditComposprodutoTitle_estfisico}" size="35" maxlength="35"/>
+
+                        <p:outputLabel value="#{myBundle.EditComposprodutoLabel_solibilidadeagua}" for="solibilidadeagua" />
+                        <p:inputText id="solibilidadeagua" value="#{composprodutoController.selected.solibilidadeagua}" title="#{myBundle.EditComposprodutoTitle_solibilidadeagua}" size="35" maxlength="35"/>
+
+                        <p:outputLabel value="#{myBundle.EditComposprodutoLabel_limiteexplosivo}" for="limiteexplosivo" />
+                        <p:inputText id="limiteexplosivo" value="#{composprodutoController.selected.limiteexplosivo}" title="#{myBundle.EditComposprodutoTitle_limiteexplosivo}" size="35" maxlength="35"/>
+
+                        <p:outputLabel value="#{myBundle.EditComposprodutoLabel_densidade}" for="densidade" />
+                        <p:inputText id="densidade" value="#{composprodutoController.selected.densidade}" title="#{myBundle.EditComposprodutoTitle_densidade}" size="35" maxlength="35"/>
+
+                        <p:outputLabel value="#{myBundle.EditComposprodutoLabel_pressavapor}" for="pressavapor" />
+                        <p:inputText id="pressavapor" value="#{composprodutoController.selected.pressavapor}" title="#{myBundle.EditComposprodutoTitle_pressavapor}" size="35" maxlength="35"/>
+
+                        <p:outputLabel value="#{myBundle.EditComposprodutoLabel_sinonimos}" for="sinonimos" />
+                        <p:inputText id="sinonimos" value="#{composprodutoController.selected.sinonimos}" title="#{myBundle.EditComposprodutoTitle_sinonimos}" size="30" maxlength="30"/>
+
+                        <p:outputLabel value="#{myBundle.EditComposprodutoLabel_tramentodisposicao}" for="tramentodisposicao" />
+                        <p:inputText id="tramentodisposicao" value="#{composprodutoController.selected.tramentodisposicao}" title="#{myBundle.EditComposprodutoTitle_tramentodisposicao}" size="255" maxlength="255"/>
+
+                        <p:outputLabel value="#{myBundle.EditComposprodutoLabel_regulamentacao}" for="regulamentacao" />
+                        <p:inputText id="regulamentacao" value="#{composprodutoController.selected.regulamentacao}" title="#{myBundle.EditComposprodutoTitle_regulamentacao}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.EditComposprodutoLabel_decomposicao}" for="decomposicao" />
+                        <p:inputText id="decomposicao" value="#{composprodutoController.selected.decomposicao}" title="#{myBundle.EditComposprodutoTitle_decomposicao}" size="100" maxlength="100"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{composprodutoController.save}" value="#{myBundle.Save}" update="display,:ComposprodutoListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ComposprodutoEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ComposprodutoEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

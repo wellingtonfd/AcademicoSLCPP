@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="UsuarioEditDlg" widgetVar="UsuarioEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditUsuarioTitle}" closeOnEscape="true">
+
+            <h:form id="UsuarioEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{usuarioController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditUsuarioLabel_idUsuario}" for="idUsuario" />
+                        <h:outputText id="idUsuario" value="#{usuarioController.selected.idUsuario}" />
+
+                        <p:outputLabel value="#{myBundle.EditUsuarioLabel_login}" for="login" />
+                        <p:inputText id="login" value="#{usuarioController.selected.login}" title="#{myBundle.EditUsuarioTitle_login}" size="12" maxlength="12"/>
+
+                        <p:outputLabel value="#{myBundle.EditUsuarioLabel_senha}" for="senha" />
+                        <p:password id="senha" value="#{usuarioController.selected.senha}" title="#{myBundle.EditUsuarioTitle_senha}" size="32" maxlength="32"/>
+
+                        <p:outputLabel value="#{myBundle.EditUsuarioLabel_nivel}" for="nivel" />
+                        <p:inputText id="nivel" value="#{usuarioController.selected.nivel}" title="#{myBundle.EditUsuarioTitle_nivel}"/>
+
+                        <p:outputLabel value="#{myBundle.EditUsuarioLabel_ativo}" for="ativo" />
+                        <p:selectBooleanCheckbox id="ativo" value="#{usuarioController.selected.ativo}" />
+
+                        <p:outputLabel value="#{myBundle.EditUsuarioLabel_nivelusuarioidNivelusuario}" for="nivelusuarioidNivelusuario" />
+                        <p:selectOneMenu id="nivelusuarioidNivelusuario" value="#{usuarioController.selected.nivelusuarioidNivelusuario}" required="true" requiredMessage="#{myBundle.EditUsuarioRequiredMessage_nivelusuarioidNivelusuario}" converter="nivelusuarioConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{nivelusuarioController.items}"
+                                           var="nivelusuarioidNivelusuarioItem"
+                                           itemValue="#{nivelusuarioidNivelusuarioItem}"
+                                           itemLabel="#{nivelusuarioidNivelusuarioItem.idNivelusuario.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{usuarioController.save}" value="#{myBundle.Save}" update="display,:UsuarioListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,UsuarioEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="UsuarioEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

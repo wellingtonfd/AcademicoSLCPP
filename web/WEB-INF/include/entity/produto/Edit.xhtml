@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ProdutoEditDlg" widgetVar="ProdutoEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditProdutoTitle}" closeOnEscape="true">
+
+            <h:form id="ProdutoEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{produtoController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditProdutoLabel_idProduto}" for="idProduto" />
+                        <h:outputText id="idProduto" value="#{produtoController.selected.idProduto}" />
+
+                        <p:outputLabel value="#{myBundle.EditProdutoLabel_nomeProduto}" for="nomeProduto" />
+                        <p:inputText id="nomeProduto" value="#{produtoController.selected.nomeProduto}" title="#{myBundle.EditProdutoTitle_nomeProduto}" required="true" requiredMessage="#{myBundle.EditProdutoRequiredMessage_nomeProduto}" size="120" maxlength="120"/>
+
+                        <p:outputLabel value="#{myBundle.EditProdutoLabel_nomegenerico}" for="nomegenerico" />
+                        <p:inputText id="nomegenerico" value="#{produtoController.selected.nomegenerico}" title="#{myBundle.EditProdutoTitle_nomegenerico}" required="true" requiredMessage="#{myBundle.EditProdutoRequiredMessage_nomegenerico}" size="120" maxlength="120"/>
+
+                        <p:outputLabel value="#{myBundle.EditProdutoLabel_origem}" for="origem" />
+                        <p:inputText id="origem" value="#{produtoController.selected.origem}" title="#{myBundle.EditProdutoTitle_origem}" required="true" requiredMessage="#{myBundle.EditProdutoRequiredMessage_origem}" size="35" maxlength="35"/>
+
+                        <p:outputLabel value="#{myBundle.EditProdutoLabel_numcas}" for="numcas" />
+                        <p:inputText id="numcas" value="#{produtoController.selected.numcas}" title="#{myBundle.EditProdutoTitle_numcas}" required="true" requiredMessage="#{myBundle.EditProdutoRequiredMessage_numcas}" size="10" maxlength="10"/>
+
+                        <p:outputLabel value="#{myBundle.EditProdutoLabel_rotuloproduto}" for="rotuloproduto" />
+                        <p:inputText id="rotuloproduto" value="#{produtoController.selected.rotuloproduto}" title="#{myBundle.EditProdutoTitle_rotuloproduto}" required="true" requiredMessage="#{myBundle.EditProdutoRequiredMessage_rotuloproduto}" size="30" maxlength="30"/>
+
+                        <p:outputLabel value="#{myBundle.EditProdutoLabel_painelseg}" for="painelseg" />
+                        <p:inputText id="painelseg" value="#{produtoController.selected.painelseg}" title="#{myBundle.EditProdutoTitle_painelseg}" required="true" requiredMessage="#{myBundle.EditProdutoRequiredMessage_painelseg}" size="30" maxlength="30"/>
+
+                        <p:outputLabel value="#{myBundle.EditProdutoLabel_risco}" for="risco" />
+                        <p:inputText id="risco" value="#{produtoController.selected.risco}" title="#{myBundle.EditProdutoTitle_risco}" required="true" requiredMessage="#{myBundle.EditProdutoRequiredMessage_risco}" size="80" maxlength="80"/>
+
+                        <p:outputLabel value="#{myBundle.EditProdutoLabel_acoesemergencia}" for="acoesemergencia" />
+                        <p:inputText id="acoesemergencia" value="#{produtoController.selected.acoesemergencia}" title="#{myBundle.EditProdutoTitle_acoesemergencia}" required="true" requiredMessage="#{myBundle.EditProdutoRequiredMessage_acoesemergencia}" size="30" maxlength="30"/>
+
+                        <p:outputLabel value="#{myBundle.EditProdutoLabel_numlote}" for="numlote" />
+                        <p:inputText id="numlote" value="#{produtoController.selected.numlote}" title="#{myBundle.EditProdutoTitle_numlote}" required="true" requiredMessage="#{myBundle.EditProdutoRequiredMessage_numlote}" size="30" maxlength="30"/>
+
+                        <p:outputLabel value="#{myBundle.EditProdutoLabel_dtfabricacao}" for="dtfabricacao" />
+                        <p:calendar id="dtfabricacao" pattern="MM/dd/yyyy" value="#{produtoController.selected.dtfabricacao}" title="#{myBundle.EditProdutoTitle_dtfabricacao}" required="true" requiredMessage="#{myBundle.EditProdutoRequiredMessage_dtfabricacao}" showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.EditProdutoLabel_dtvalidade}" for="dtvalidade" />
+                        <p:calendar id="dtvalidade" pattern="MM/dd/yyyy" value="#{produtoController.selected.dtvalidade}" title="#{myBundle.EditProdutoTitle_dtvalidade}" required="true" requiredMessage="#{myBundle.EditProdutoRequiredMessage_dtvalidade}" showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.EditProdutoLabel_rumOnuidNumOnu}" for="rumOnuidNumOnu" />
+                        <p:selectOneMenu id="rumOnuidNumOnu" value="#{produtoController.selected.rumOnuidNumOnu}" required="true" requiredMessage="#{myBundle.EditProdutoRequiredMessage_rumOnuidNumOnu}" converter="numOnuConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{numOnuController.items}"
+                                           var="rumOnuidNumOnuItem"
+                                           itemValue="#{rumOnuidNumOnuItem}"
+                                           itemLabel="#{rumOnuidNumOnuItem.idNumOnu.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.EditProdutoLabel_fornecedoridFornecedor}" for="fornecedoridFornecedor" />
+                        <p:selectOneMenu id="fornecedoridFornecedor" value="#{produtoController.selected.fornecedoridFornecedor}" required="true" requiredMessage="#{myBundle.EditProdutoRequiredMessage_fornecedoridFornecedor}" converter="fornecedorConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fornecedorController.items}"
+                                           var="fornecedoridFornecedorItem"
+                                           itemValue="#{fornecedoridFornecedorItem}"
+                                           itemLabel="#{fornecedoridFornecedorItem.idFornecedor.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.EditProdutoLabel_composprodutotipoproduto}" for="composprodutotipoproduto" />
+                        <p:selectOneMenu id="composprodutotipoproduto" value="#{produtoController.selected.composprodutotipoproduto}" required="true" requiredMessage="#{myBundle.EditProdutoRequiredMessage_composprodutotipoproduto}" converter="composprodutoConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{composprodutoController.items}"
+                                           var="composprodutotipoprodutoItem"
+                                           itemValue="#{composprodutotipoprodutoItem}"
+                                           itemLabel="#{composprodutotipoprodutoItem.tipoproduto.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.EditProdutoLabel_classeidClasse}" for="classeidClasse" />
+                        <p:selectOneMenu id="classeidClasse" value="#{produtoController.selected.classeidClasse}" required="true" requiredMessage="#{myBundle.EditProdutoRequiredMessage_classeidClasse}" converter="classeConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{classeController.items}"
+                                           var="classeidClasseItem"
+                                           itemValue="#{classeidClasseItem}"
+                                           itemLabel="#{classeidClasseItem.idClasse.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{produtoController.save}" value="#{myBundle.Save}" update="display,:ProdutoListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ProdutoEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ProdutoEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
