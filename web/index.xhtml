@@ -6,19 +6,31 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/WEB-INF/entity/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{myBundle.AppName}"></h:outputText>
-        </ui:define>
+    <ui:composition template="/WEB-INF/entity/templateLogin.xhtml">
         <ui:define name="body">
-            <!-- <p:panel header="#{myBundle.Welcome}">
-                
-                <h:outputText value="#{myBundle.WelcomeMessage}"></h:outputText> 
-            </p:panel>-->
             <p:panel>
-                <div align="center">
-                    <h1><b>Seja Bem-vindo</b></h1>
-                    <p:graphicImage  value="images/produtos-perigosos1.jpg"/>
+                <div class="conteiner">
+                    <h:form  id="formLogin">
+                            <p:growl id="growl" showDetail="true" life="3000"/>
+                            <h3>simples</h3>
+                            <p:panel header="Acesso sistema" footer="visible">
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <h:outputLabel for="username" value="Username"/>
+                                    <h:inputText value="#{myBundle.CreateUsuarioTitle_login}"
+                                                 id="username" required="true" label="UserName"/>
+
+                                     <h:outputLabel for="password" value="password"/>
+                                     <h:inputSecret value="#{myBundle.CreateUsuarioTitle_senha}"
+                                                 id="password" required="true" label="password"/>
+
+                                     <f:facet name="footer">
+                                         <p:commandButton id="loginbutton" value="login" update=":growl"
+                                                          actionListener="#{myBundle.CreateUsuarioTitle_senha}"
+                                                          oncomplete="handleLoginRequest(xhr, status, args)"/>
+                                     </f:facet>
+                                </h:panelGrid>
+                            </p:panel>
+                    </h:form>
                 </div>
             </p:panel>
 
