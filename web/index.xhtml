@@ -9,10 +9,11 @@
     <ui:composition template="/WEB-INF/entity/templateLogin.xhtml">
         <ui:define name="body">
             <p:panel>
-                <div class="conteiner">
+                <div class="conteiner" align="center">
+                    <div id="caixa" align="center">
                     <h:form  id="formLogin">
                             <p:growl id="growl" showDetail="true" life="3000"/>
-                            <h3>simples</h3>
+                            
                             <p:panel header="Acesso sistema" footer="visible">
                                 <h:panelGrid columns="2" cellpadding="5">
                                     <h:outputLabel for="username" value="Username"/>
@@ -23,14 +24,15 @@
                                      <h:inputSecret value="#{myBundle.CreateUsuarioTitle_senha}"
                                                  id="password" required="true" label="password"/>
 
-                                     <f:facet name="footer">
-                                         <p:commandButton id="loginbutton" value="login" update=":growl"
+                                     <f:facet name="footer" >
+                                         <p:commandButton  id="loginbutton" value="login" update=":growl"
                                                           actionListener="#{myBundle.CreateUsuarioTitle_senha}"
                                                           oncomplete="handleLoginRequest(xhr, status, args)"/>
                                      </f:facet>
                                 </h:panelGrid>
                             </p:panel>
                     </h:form>
+                    </div>
                 </div>
             </p:panel>
 
