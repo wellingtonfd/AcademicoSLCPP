@@ -114,9 +114,9 @@
             </p:dataTable>
 
             <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{endArmazemController.prepareCreate}" update=":EndArmazemCreateForm" oncomplete="EndArmazemCreateDialog.show()"/>
-            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{myBundle.View}" update=":EndArmazemViewForm" oncomplete="EndArmazemViewDialog.show()" disabled="#{empty endArmazemController.selected}"/>
-            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":EndArmazemEditForm" oncomplete="EndArmazemEditDialog.show()" disabled="#{empty endArmazemController.selected}"/>
-            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{endArmazemController.delete}" update=":growl,datalist" disabled="#{empty endArmazemController.selected}">
+            <p:commandButton id="viewButton"    icon="ui-icon-search" value="#{myBundle.View}" update=":EndArmazemViewForm" oncomplete="EndArmazemViewDialog.show()" disabled="#{empty endArmazemController.selected}"/>
+            <p:commandButton id="editButton"    icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":EndArmazemEditForm" oncomplete="EndArmazemEditDialog.show()" disabled="#{empty endArmazemController.selected}"/>
+            <p:commandButton id="deleteButton"  icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{endArmazemController.delete}" update=":growl,datalist" disabled="#{empty endArmazemController.selected}">
                 <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
             </p:commandButton>
 

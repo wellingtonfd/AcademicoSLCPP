@@ -69,9 +69,9 @@
             </p:dataTable>
 
             <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{tipoEquipamentoController.prepareCreate}" update=":TipoEquipamentoCreateForm" oncomplete="TipoEquipamentoCreateDialog.show()"/>
-            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{myBundle.View}" update=":TipoEquipamentoViewForm" oncomplete="TipoEquipamentoViewDialog.show()" disabled="#{empty tipoEquipamentoController.selected}"/>
-            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":TipoEquipamentoEditForm" oncomplete="TipoEquipamentoEditDialog.show()" disabled="#{empty tipoEquipamentoController.selected}"/>
-            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{tipoEquipamentoController.delete}" update=":growl,datalist" disabled="#{empty tipoEquipamentoController.selected}">
+            <p:commandButton id="viewButton"    icon="ui-icon-search" value="#{myBundle.View}" update=":TipoEquipamentoViewForm" oncomplete="TipoEquipamentoViewDialog.show()" disabled="#{empty tipoEquipamentoController.selected}"/>
+            <p:commandButton id="editButton"    icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":TipoEquipamentoEditForm" oncomplete="TipoEquipamentoEditDialog.show()" disabled="#{empty tipoEquipamentoController.selected}"/>
+            <p:commandButton id="deleteButton"  icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{tipoEquipamentoController.delete}" update=":growl,datalist" disabled="#{empty tipoEquipamentoController.selected}">
                 <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
             </p:commandButton>
 

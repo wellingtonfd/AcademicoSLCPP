@@ -60,9 +60,9 @@
             </p:dataTable>
 
             <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{classeController.prepareCreate}" update=":ClasseCreateForm" oncomplete="ClasseCreateDialog.show()"/>
-            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{myBundle.View}" update=":ClasseViewForm" oncomplete="ClasseViewDialog.show()" disabled="#{empty classeController.selected}"/>
-            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":ClasseEditForm" oncomplete="ClasseEditDialog.show()" disabled="#{empty classeController.selected}"/>
-            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{classeController.delete}" update=":growl,datalist" disabled="#{empty classeController.selected}">
+            <p:commandButton id="viewButton"  icon="ui-icon-search" value="#{myBundle.View}" update=":ClasseViewForm" oncomplete="ClasseViewDialog.show()" disabled="#{empty classeController.selected}"/>
+            <p:commandButton id="editButton"  icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":ClasseEditForm" oncomplete="ClasseEditDialog.show()" disabled="#{empty classeController.selected}"/>
+            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{classeController.delete}" update=":growl,datalist" disabled="#{empty classeController.selected}">
                 <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
             </p:commandButton>
 

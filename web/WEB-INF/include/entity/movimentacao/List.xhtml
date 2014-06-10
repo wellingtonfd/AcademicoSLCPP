@@ -108,9 +108,9 @@
             </p:dataTable>
 
             <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{movimentacaoController.prepareCreate}" update=":MovimentacaoCreateForm" oncomplete="MovimentacaoCreateDialog.show()"/>
-            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{myBundle.View}" update=":MovimentacaoViewForm" oncomplete="MovimentacaoViewDialog.show()" disabled="#{empty movimentacaoController.selected}"/>
-            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":MovimentacaoEditForm" oncomplete="MovimentacaoEditDialog.show()" disabled="#{empty movimentacaoController.selected}"/>
-            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{movimentacaoController.delete}" update=":growl,datalist" disabled="#{empty movimentacaoController.selected}">
+            <p:commandButton id="viewButton"    icon="ui-icon-search" value="#{myBundle.View}" update=":MovimentacaoViewForm" oncomplete="MovimentacaoViewDialog.show()" disabled="#{empty movimentacaoController.selected}"/>
+            <p:commandButton id="editButton"    icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":MovimentacaoEditForm" oncomplete="MovimentacaoEditDialog.show()" disabled="#{empty movimentacaoController.selected}"/>
+            <p:commandButton id="deleteButton"  icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{movimentacaoController.delete}" update=":growl,datalist" disabled="#{empty movimentacaoController.selected}">
                 <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
             </p:commandButton>
 
