@@ -34,9 +34,9 @@
                         <p:selectOneMenu id="codPais" value="#{enderecoController.selected.codPais}" required="true" requiredMessage="#{myBundle.CreateEnderecoRequiredMessage_codPais}" converter="paisConverter">
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{paisController.items}"
-                                           var="codPaisItem"
-                                           itemValue="#{codPaisItem}"
-                                           itemLabel="#{codPaisItem.codPais.toString()}"
+                                           var="nomPaisItem"
+                                           itemValue="#{nomPaisItem}"
+                                           itemLabel="#{nomPaisItem.nomPais.toString()}"
                                            />
 
                         </p:selectOneMenu>
@@ -45,9 +45,9 @@
                         <p:selectOneMenu id="codEstado" value="#{enderecoController.selected.codEstado}" required="true" requiredMessage="#{myBundle.CreateEnderecoRequiredMessage_codEstado}" converter="estadoConverter">
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{estadoController.items}"
-                                           var="codEstadoItem"
-                                           itemValue="#{codEstadoItem}"
-                                           itemLabel="#{codEstadoItem.codEstado.toString()}"
+                                           var="nomEstadoItem"
+                                           itemValue="#{nomEstadoItem}"
+                                           itemLabel="#{nomEstadoItem.nomEstado.toString()}"
                                            />
 
                         </p:selectOneMenu>
@@ -56,9 +56,9 @@
                         <p:selectOneMenu id="codCidade" value="#{enderecoController.selected.codCidade}" required="true" requiredMessage="#{myBundle.CreateEnderecoRequiredMessage_codCidade}" converter="cidadeConverter">
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{cidadeController.items}"
-                                           var="codCidadeItem"
-                                           itemValue="#{codCidadeItem}"
-                                           itemLabel="#{codCidadeItem.codCidade.toString()}"
+                                           var="nomCidadeItem"
+                                           itemValue="#{nomCidadeItem}"
+                                           itemLabel="#{nomCidadeItem.nomCidade.toString()}"
                                            />
 
                         </p:selectOneMenu>
