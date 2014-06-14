@@ -34,13 +34,13 @@
                         <h:outputText value="#{enderecoController.selected.bairro}" title="#{myBundle.ViewEnderecoTitle_bairro}"/>
 
                         <h:outputText value="#{myBundle.ViewEnderecoLabel_codPais}"/>
-                        <h:outputText value="#{enderecoController.selected.codPais.codPais}"/>
+                        <h:outputText value="#{enderecoController.selected.codPais.nomPais}"/>
 
                         <h:outputText value="#{myBundle.ViewEnderecoLabel_codEstado}"/>
-                        <h:outputText value="#{enderecoController.selected.codEstado.codEstado}"/>
+                        <h:outputText value="#{enderecoController.selected.codEstado.nomEstado}"/>
 
                         <h:outputText value="#{myBundle.ViewEnderecoLabel_codCidade}"/>
-                        <h:outputText value="#{enderecoController.selected.codCidade.codCidade}"/>
+                        <h:outputText value="#{enderecoController.selected.codCidade.nomCidade}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="EnderecoViewDialog.hide()"/>
                 </h:panelGroup>
