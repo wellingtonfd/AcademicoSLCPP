@@ -17,6 +17,8 @@ public class FuncionarioController extends AbstractController<Funcionario> {
     private UsuarioController usuarioidUsuarioController;
     @Inject
     private EnderecoController enderecoidEnderecoController;
+    @Inject
+    private EnderecoController enderecoCollectionController;
 
     public FuncionarioController() {
         // Inform the Abstract parent controller of the concrete Funcionario?cap_first Entity
@@ -69,5 +71,17 @@ public class FuncionarioController extends AbstractController<Funcionario> {
         if (this.getSelected() != null && enderecoidEnderecoController.getSelected() == null) {
             enderecoidEnderecoController.setSelected(this.getSelected().getEnderecoidEndereco());
         }
+    }
+     /**
+     * Sets the "items" attribute with a collection of Funcionario entities that
+     * are retrieved from Endereco?cap_first and returns the navigation outcome.
+     *
+     * @return navigation outcome for Funcionario page
+     */
+    public String navigateEnderecoCollection() {
+        if (this.getSelected() != null) {
+            FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("Endereco_items", this.getSelected().getEnderecoidEndereco());
+        }
+        return "/entity/endereco/index";
     }
 }
